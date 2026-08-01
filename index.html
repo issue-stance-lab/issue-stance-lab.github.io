@@ -1,21 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Issue Stance Lab</title>
-    <!-- AdSense 接続コード -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2542211932832864" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Issue Stance Lab — 意見が割れる社会の争点を、理由から整理する</title>
+<meta name="description" content="Issue Stance Lab は、SNS上の公開投稿を収集・分類し、社会で意見が割れているテーマを「賛成・反対それぞれの理由」とともに整理する個人運営のプロジェクトです。">
+<link rel="canonical" href="https://issue-stance-lab.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Issue Stance Lab">
+<meta property="og:title" content="Issue Stance Lab — 意見が割れる社会の争点を、理由から整理する">
+<meta property="og:description" content="SNSの公開投稿サンプルを収集・AI分類し、賛成・反対それぞれの理由と背景を整理して公開しています。">
+<meta property="og:url" content="https://issue-stance-lab.github.io/">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2542211932832864" crossorigin="anonymous"></script>
+<style>
+:root{--blue:#075ef2;--orange:#ff5426;--navy:#071a3d;--muted:#61708a;--line:#e6ebf3;--shadow:0 12px 32px rgba(16,47,91,.09);--shadow-sm:0 5px 18px rgba(16,47,91,.08);--font:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:#f8faff;color:var(--navy);font-family:var(--font);line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:var(--blue)}
+.shell{max-width:880px;margin:0 auto;padding:0 20px}
+header.site{background:#fff;border-bottom:1px solid var(--line)}
+header.site .shell{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.brand{font-weight:900;font-size:18px;letter-spacing:-.02em;text-decoration:none;color:var(--navy)}
+.brand span{display:block;font-size:10px;font-weight:600;color:var(--muted)}
+header.site nav a{font-size:12px;font-weight:700;text-decoration:none;margin-left:16px}
+.hero{background:#fff;border-bottom:1px solid var(--line);padding:44px 0 38px}
+h1{font-size:clamp(26px,4.2vw,38px);line-height:1.4;letter-spacing:-.03em;margin:0 0 16px;font-weight:900}
+.lead{font-size:15px;color:#35435b;margin:0 0 22px}
+.cta{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;background:linear-gradient(135deg,var(--blue),#087dff);color:#fff;text-decoration:none;font-weight:800;font-size:15px;box-shadow:0 10px 24px rgba(7,94,242,.22)}
+main{padding:8px 0 56px}
+section{margin-top:40px}
+h2{font-size:20px;letter-spacing:-.02em;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+h3{font-size:15px;margin:0 0 6px}
+p{margin:0 0 14px;font-size:14px}
+.note{background:#fff;border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:10px;padding:14px 18px;font-size:13px;color:#4a5872;box-shadow:var(--shadow-sm)}
+.note strong{display:block;color:var(--navy);margin-bottom:4px;font-size:13px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0;padding:0;list-style:none}
+.steps li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow-sm)}
+.steps .num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#eef5ff;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:10px}
+.steps p{font-size:12px;color:var(--muted);margin:0}
+.topics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:0;padding:0;list-style:none}
+.topics a{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--navy);box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
+.topics a:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.topics .cat{display:inline-block;margin-bottom:6px;padding:3px 8px;border-radius:6px;background:#eef5ff;color:var(--blue);font-size:10px;font-weight:800}
+.topics .ttl{display:block;font-size:14px;font-weight:700;line-height:1.5}
+.policy{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow-sm)}
+.policy ul{margin:0;padding-left:20px;font-size:14px}
+.policy li{margin-bottom:8px}
+footer.site{background:#07172f;color:rgba(255,255,255,.66);padding:30px 0 22px;font-size:12px}
+footer.site a{color:rgba(255,255,255,.8)}
+footer.site .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:14px}
+footer.site .copy{padding-top:14px;border-top:1px solid rgba(255,255,255,.12);font-size:11px}
+@media(max-width:680px){.steps,.topics{grid-template-columns:1fr}header.site .shell{height:auto;padding-top:12px;padding-bottom:12px;flex-direction:column;align-items:flex-start}header.site nav a{margin:0 16px 0 0}}
+</style>
 </head>
 <body>
-    <header style="text-align: center; margin-top: 100px; font-family: sans-serif;">
-        <h1>Issue Stance Lab</h1>
-        <p>社会的な論争やSNSの反応を客観的に可視化・分析するラボです。</p>
-        <p style="margin-top: 30px;">
-            <a href="/sns-reaction-map/" style="color: #1769d1; font-weight: bold; text-decoration: none; font-size: 18px; border: 2px solid #1769d1; padding: 10px 20px; border-radius: 5px;">
-                👉 SNS反応まっぷ はこちら
-            </a>
-        </p>
-    </header>
+<header class="site">
+  <div class="shell">
+    <a class="brand" href="/">Issue Stance Lab<span>意見が割れる争点を、理由から整理する</span></a>
+    <nav>
+      <a href="/sns-reaction-map/">SNS反応まっぷ</a>
+      <a href="/sns-reaction-map/about.html">運営者情報</a>
+      <a href="/sns-reaction-map/usage.html">使い方</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="shell">
+    <h1>賛成か反対かではなく、<br>「なぜそう考えるのか」を並べて読む。</h1>
+    <p class="lead">Issue Stance Lab は、社会で意見が割れているテーマについて、SNS上の公開投稿を収集・分類し、どんな立場の人が何を理由にそう考えているのかを整理して公開している個人運営のプロジェクトです。制作しているサイト「SNS反応まっぷ」では、現在11のテーマを公開しています。</p>
+    <a class="cta" href="/sns-reaction-map/">SNS反応まっぷを見る →</a>
+  </div>
+</div>
+
+<main class="shell">
+
+  <section>
+    <div class="note">
+      <strong>掲載内容の性質について</strong>
+      掲載しているのは、収集したSNS公開投稿の<b>サンプル</b>を整理した結果であり、社会全体の世論調査ではありません。件数の比率をそのまま「世論の比率」として読むことはできません。各テーマページには、取得元・件数・分類方法を明記しています。
+    </div>
+  </section>
+
+  <section>
+    <h2>何をしているか</h2>
+    <p>ニュースやSNSで意見が割れる争点は、「賛成が多い／反対が多い」という数字だけを見ても、その裏にある理由までは分かりません。同じ「反対」でも、制度の中身に反対している人と、決め方の乱暴さに反対している人では、話がまったく噛み合いません。Issue Stance Lab は、そこを分けて読めるようにすることを目的にしています。</p>
+    <ol class="steps">
+      <li>
+        <span class="num">1</span>
+        <h3>収集</h3>
+        <p>テーマごとに検索語を決め、Yahoo!リアルタイム検索から公開投稿を収集します。取得期間と件数は記録し、ページ上に表示します。</p>
+      </li>
+      <li>
+        <span class="num">2</span>
+        <h3>分類</h3>
+        <p>大規模言語モデルを使い、各投稿がどの論点について何を主張しているかを分類します。分類は論点整理の補助であり、事実認定ではありません。</p>
+      </li>
+      <li>
+        <span class="num">3</span>
+        <h3>編集と公開</h3>
+        <p>分類結果を人が確認し、賛成・反対それぞれの主要な論拠と争点の背景を整理してページにまとめます。読者は自分の立場を投票できます。</p>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>公開中のテーマ</h2>
+    <p>各テーマのページでは、争点の背景、賛成・反対それぞれの理由、分類件数と取得条件を確認できます。件数と取得期間は各ページに記載しています。</p>
+    <ul class="topics">
+      <li><a href="/sns-reaction-map/consumption-tax-cut-reaction-map.html"><span class="cat">税・財政</span><span class="ttl">消費税減税は実現すべきか</span></a></li>
+      <li><a href="/sns-reaction-map/koshitsu-tenpakai-reaction-map.html"><span class="cat">政治・皇室</span><span class="ttl">皇室典範改正と皇位継承</span></a></li>
+      <li><a href="/sns-reaction-map/ai-copyright-reaction-map.html"><span class="cat">テクノロジー</span><span class="ttl">生成AIと著作権</span></a></li>
+      <li><a href="/sns-reaction-map/constitutional-amendment-reaction-map.html"><span class="cat">政治・法律</span><span class="ttl">憲法改正論議</span></a></li>
+      <li><a href="/sns-reaction-map/bukatsu-chiiki-reaction-map.html"><span class="cat">教育・子ども</span><span class="ttl">部活動の地域移行の是非</span></a></li>
+      <li><a href="/sns-reaction-map/school-nickname-ban-reaction-map.html"><span class="cat">教育・子ども</span><span class="ttl">学校でのあだ名禁止の是非</span></a></li>
+      <li><a href="/sns-reaction-map/henoko-student-accident-reaction-map.html"><span class="cat">教育・基地問題</span><span class="ttl">辺野古の高校生死亡事故</span></a></li>
+      <li><a href="/sns-reaction-map/bike-blue-ticket-reaction-map.html"><span class="cat">交通・安全</span><span class="ttl">自転車の青切符導入の是非</span></a></li>
+      <li><a href="/sns-reaction-map/elderly-license-revocation-reaction-map.html"><span class="cat">交通・福祉</span><span class="ttl">高齢者の運転免許返納義務化</span></a></li>
+      <li><a href="/sns-reaction-map/fukushuto-reaction-map.html"><span class="cat">政治・統治機構</span><span class="ttl">副首都法案・副首都構想</span></a></li>
+      <li><a href="/sns-reaction-map/takaichi-reaction-map-standard.html"><span class="cat">政治・ネット選挙</span><span class="ttl">高市文春・中傷動画問題</span></a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>編集方針</h2>
+    <div class="policy">
+      <ul>
+        <li><b>賛否のどちらかを推奨しません。</b>特定の政党・団体・候補者を支持または批判する目的でテーマを選定・編集することはありません。</li>
+        <li><b>両側の理由を必ず載せます。</b>片方の立場の論拠だけを詳しく書き、もう片方を要約で済ませることはしません。</li>
+        <li><b>数字の出所を明示します。</b>ページに出す件数は収集した投稿データから機械的に算出したものだけを使い、根拠のない概数は掲載しません。</li>
+        <li><b>投稿の扱いに配慮します。</b>個々の投稿は要約とリンク中心で扱い、一般個人が特定される形での転載は行いません。</li>
+        <li><b>誤りは訂正します。</b>事実誤認のご指摘および掲載内容の削除依頼には、内容を確認のうえ対応します。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>運営者・お問い合わせ</h2>
+    <p>本サイトは個人が運営しています。テーマの選定、データ収集・分類の仕組みの開発、ページ制作までを一貫して行っています。運営者情報とデータの詳しい取り扱いは<a href="/sns-reaction-map/about.html">このサイトについて</a>をご覧ください。</p>
+    <p>内容の誤りのご指摘、引用の削除依頼、その他のお問い合わせは<a href="https://docs.google.com/forms/d/e/1FAIpQLSdySbMYxEsLOYmI4jsqjIkSGl6WHF78qLlypOmXAg9tVDy2FQ/viewform" target="_blank" rel="noopener noreferrer">お問い合わせフォーム</a>よりお寄せください。個人運営のため個別の返信は原則として行っておりませんが、事実誤認のご指摘と削除依頼には対応します。</p>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="shell">
+    <div class="links">
+      <a href="/sns-reaction-map/">SNS反応まっぷ</a>
+      <a href="/sns-reaction-map/about.html">このサイトについて</a>
+      <a href="/sns-reaction-map/usage.html">使い方・FAQ</a>
+      <a href="/sns-reaction-map/privacy.html">プライバシーポリシー</a>
+      <a href="/sns-reaction-map/disclaimer.html">免責事項</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdySbMYxEsLOYmI4jsqjIkSGl6WHF78qLlypOmXAg9tVDy2FQ/viewform" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
+    </div>
+    <div class="copy">© Issue Stance Lab</div>
+  </div>
+</footer>
 </body>
 </html>
