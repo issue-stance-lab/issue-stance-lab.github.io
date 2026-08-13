@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# robots.txt はホストのルートに置いたものだけがクローラーに読まれる。
+# /sns-reaction-map/robots.txt にも同じ内容があるが、そちらは仕様上参照されない。
+Sitemap: https://issue-stance-lab.github.io/sitemap.xml
+Sitemap: https://issue-stance-lab.github.io/sns-reaction-map/sitemap.xml
