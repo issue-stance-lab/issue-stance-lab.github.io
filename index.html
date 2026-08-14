@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Issue Stance Lab — 意見が割れる社会の争点を、理由から整理する</title>
-<meta name="description" content="Issue Stance Lab は、SNS上の公開投稿を収集・分類し、社会で意見が割れているテーマを「賛成・反対それぞれの理由」とともに整理する個人運営のプロジェクトです。">
+<meta name="description" content="Issue Stance Lab は、SNS上の公開投稿を収集・分類し、社会で意見が割れている11のテーマを「賛成・反対それぞれの理由」とともに整理している個人運営のプロジェクトです。">
 <link rel="canonical" href="https://issue-stance-lab.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Issue Stance Lab">
@@ -27,6 +27,9 @@ header.site nav a{font-size:12px;font-weight:700;text-decoration:none;margin-lef
 h1{font-size:clamp(26px,4.2vw,38px);line-height:1.4;letter-spacing:-.03em;margin:0 0 16px;font-weight:900}
 .lead{font-size:15px;color:#35435b;margin:0 0 22px}
 .cta{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;background:linear-gradient(135deg,var(--blue),#087dff);color:#fff;text-decoration:none;font-weight:800;font-size:15px;box-shadow:0 10px 24px rgba(7,94,242,.22)}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0;padding:0;list-style:none}
+.facts li{background:#f4f8ff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-size:12px;color:var(--muted)}
+.facts b{display:block;font-size:17px;color:var(--navy);letter-spacing:-.02em}
 main{padding:8px 0 56px}
 section{margin-top:40px}
 h2{font-size:20px;letter-spacing:-.02em;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid var(--line)}
@@ -39,10 +42,20 @@ p{margin:0 0 14px;font-size:14px}
 .steps .num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#eef5ff;color:var(--blue);font-size:12px;font-weight:900;margin-bottom:10px}
 .steps p{font-size:12px;color:var(--muted);margin:0}
 .topics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:0;padding:0;list-style:none}
-.topics a{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--navy);box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
+.topics a{display:block;height:100%;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-decoration:none;color:var(--navy);box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s}
 .topics a:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
 .topics .cat{display:inline-block;margin-bottom:6px;padding:3px 8px;border-radius:6px;background:#eef5ff;color:var(--blue);font-size:10px;font-weight:800}
-.topics .ttl{display:block;font-size:14px;font-weight:700;line-height:1.5}
+.topics .ttl{display:block;font-size:15px;font-weight:800;line-height:1.5;letter-spacing:-.01em}
+.topics .sum{display:block;margin:6px 0 10px;font-size:12.5px;line-height:1.75;color:#4a5872}
+.topics .meta{display:block;font-size:11px;color:var(--muted);font-weight:600}
+.topics .meta b{color:var(--navy);font-size:12px}
+.topics .sep{margin:0 6px;color:var(--line)}
+.recent{background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px 22px;box-shadow:var(--shadow-sm)}
+.recent ul{margin:0;padding:0;list-style:none}
+.recent li{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}
+.recent li:last-child{border-bottom:none}
+.recent .when{font-size:11px;color:var(--muted);font-weight:700;min-width:104px}
+.recent .what{font-size:11px;color:var(--muted)}
 .policy{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow-sm)}
 .policy ul{margin:0;padding-left:20px;font-size:14px}
 .policy li{margin-bottom:8px}
@@ -50,7 +63,7 @@ footer.site{background:#07172f;color:rgba(255,255,255,.66);padding:30px 0 22px;f
 footer.site a{color:rgba(255,255,255,.8)}
 footer.site .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:14px}
 footer.site .copy{padding-top:14px;border-top:1px solid rgba(255,255,255,.12);font-size:11px}
-@media(max-width:680px){.steps,.topics{grid-template-columns:1fr}header.site .shell{height:auto;padding-top:12px;padding-bottom:12px;flex-direction:column;align-items:flex-start}header.site nav a{margin:0 16px 0 0}}
+@media(max-width:680px){.steps,.topics{grid-template-columns:1fr}header.site .shell{height:auto;padding-top:12px;padding-bottom:12px;flex-direction:column;align-items:flex-start}header.site nav a{margin:0 16px 0 0}.recent .when{min-width:0}}
 </style>
 </head>
 <body>
@@ -70,6 +83,11 @@ footer.site .copy{padding-top:14px;border-top:1px solid rgba(255,255,255,.12);fo
     <h1>賛成か反対かではなく、<br>「なぜそう考えるのか」を並べて読む。</h1>
     <p class="lead">Issue Stance Lab は、社会で意見が割れているテーマについて、SNS上の公開投稿を収集・分類し、どんな立場の人が何を理由にそう考えているのかを整理して公開している個人運営のプロジェクトです。制作しているサイト「SNS反応まっぷ」では、現在11のテーマを公開しています。</p>
     <a class="cta" href="/sns-reaction-map/">SNS反応まっぷを見る →</a>
+    <ul class="facts">
+      <li>公開中のテーマ<b>11</b></li>
+      <li>分類済み投稿<b>7,205件</b></li>
+      <li>最終更新<b>2026年8月10日</b></li>
+    </ul>
   </div>
 </div>
 
@@ -85,41 +103,60 @@ footer.site .copy{padding-top:14px;border-top:1px solid rgba(255,255,255,.12);fo
   <section>
     <h2>何をしているか</h2>
     <p>ニュースやSNSで意見が割れる争点は、「賛成が多い／反対が多い」という数字だけを見ても、その裏にある理由までは分かりません。同じ「反対」でも、制度の中身に反対している人と、決め方の乱暴さに反対している人では、話がまったく噛み合いません。Issue Stance Lab は、そこを分けて読めるようにすることを目的にしています。</p>
+    <p>そのため、各テーマでは投稿を「賛成／反対」だけで数えず、<b>何について語っているか（論点）</b>と<b>その論点に対する立場</b>の2つに分けて分類しています。たとえば消費税減税なら、財源をどうするかを論じている投稿と、生活の苦しさを訴えている投稿は、どちらも「賛成」でも読み方が変わります。論点ごとに賛否の内訳が見えると、賛成派・反対派の内部でも意見が割れている場所が分かります。</p>
     <ol class="steps">
       <li>
         <span class="num">1</span>
         <h3>収集</h3>
-        <p>テーマごとに検索語を決め、Yahoo!リアルタイム検索から公開投稿を収集します。取得期間と件数は記録し、ページ上に表示します。</p>
+        <p>テーマごとに賛否双方の立場から検索語を決め、Yahoo!リアルタイム検索から公開投稿を収集します。取得期間と件数は記録し、ページ上に表示します。</p>
       </li>
       <li>
         <span class="num">2</span>
         <h3>分類</h3>
-        <p>大規模言語モデルを使い、各投稿がどの論点について何を主張しているかを分類します。分類は論点整理の補助であり、事実認定ではありません。</p>
+        <p>大規模言語モデルを使い、各投稿が意見を含むかを判定したうえで、どの論点について何を主張しているかを分類します。分類は論点整理の補助であり、事実認定ではありません。</p>
       </li>
       <li>
         <span class="num">3</span>
         <h3>編集と公開</h3>
-        <p>分類結果を人が確認し、賛成・反対それぞれの主要な論拠と争点の背景を整理してページにまとめます。読者は自分の立場を投票できます。</p>
+        <p>分類結果を人が確認し、賛成・反対それぞれの主要な論拠と争点の背景、一次資料へのリンクを整理してページにまとめます。読者は自分の立場を投票できます。</p>
       </li>
     </ol>
   </section>
 
   <section>
+    <h2>数字の読み方</h2>
+    <p>各テーマに表示している「分類済み◯件」は、<b>収集した投稿のうち、意見を含むと判定され論点分類まで済んだ件数</b>です。収集した総数とは別の数字で、テーマページには両方を載せています。母数が何を指しているかを取り違えると読み方が変わるため、ページ内の数字には必ず母数の名前を付けています。</p>
+    <p>この数字は<b>そのテーマに関心があり、かつSNSに書き込んだ人の中での分布</b>です。世の中の意見の比率ではありません。関心が高い人ほど投稿しやすく、検索語の選び方によっても集まる投稿は変わります。何を検索語にしたかは各テーマページの調査条件に明記しているので、偏りの方向を読者が判断できるようにしています。</p>
+    <p>ページ内の投票は、この分類結果とは別に集計しています。読者の投票結果を投稿の分類件数に混ぜることはありません。</p>
+  </section>
+
+  <section>
     <h2>公開中のテーマ</h2>
-    <p>各テーマのページでは、争点の背景、賛成・反対それぞれの理由、分類件数と取得条件を確認できます。件数と取得期間は各ページに記載しています。</p>
+    <p>各テーマのページでは、争点の背景と経緯、賛成・反対それぞれの理由、論点ごとの分類件数、取得期間と検索条件、参照した一次資料を確認できます。以下の件数と最終更新日は各テーマページの表示と同じ値です。</p>
     <ul class="topics">
-      <li><a href="/sns-reaction-map/consumption-tax-cut-reaction-map.html"><span class="cat">税・財政</span><span class="ttl">消費税減税は実現すべきか</span></a></li>
-      <li><a href="/sns-reaction-map/koshitsu-tenpakai-reaction-map.html"><span class="cat">政治・皇室</span><span class="ttl">皇室典範改正と皇位継承</span></a></li>
-      <li><a href="/sns-reaction-map/ai-copyright-reaction-map.html"><span class="cat">テクノロジー</span><span class="ttl">生成AIと著作権</span></a></li>
-      <li><a href="/sns-reaction-map/constitutional-amendment-reaction-map.html"><span class="cat">政治・法律</span><span class="ttl">憲法改正論議</span></a></li>
-      <li><a href="/sns-reaction-map/bukatsu-chiiki-reaction-map.html"><span class="cat">教育・子ども</span><span class="ttl">部活動の地域移行の是非</span></a></li>
-      <li><a href="/sns-reaction-map/school-nickname-ban-reaction-map.html"><span class="cat">教育・子ども</span><span class="ttl">学校でのあだ名禁止の是非</span></a></li>
-      <li><a href="/sns-reaction-map/henoko-student-accident-reaction-map.html"><span class="cat">教育・基地問題</span><span class="ttl">辺野古の高校生死亡事故</span></a></li>
-      <li><a href="/sns-reaction-map/bike-blue-ticket-reaction-map.html"><span class="cat">交通・安全</span><span class="ttl">自転車の青切符導入の是非</span></a></li>
-      <li><a href="/sns-reaction-map/elderly-license-revocation-reaction-map.html"><span class="cat">交通・福祉</span><span class="ttl">高齢者の運転免許返納義務化</span></a></li>
-      <li><a href="/sns-reaction-map/fukushuto-reaction-map.html"><span class="cat">政治・統治機構</span><span class="ttl">副首都法案・副首都構想</span></a></li>
-      <li><a href="/sns-reaction-map/takaichi-reaction-map-standard.html"><span class="cat">政治・ネット選挙</span><span class="ttl">高市文春・中傷動画問題</span></a></li>
+      <li><a href="/sns-reaction-map/ai-copyright-reaction-map.html"><span class="cat">テクノロジー</span><span class="ttl">生成AIと著作権</span><span class="sum">生成AIの学習と著作権をめぐるSNS投稿を分類し、無断利用、クリエイター保護、法制度、技術推進など6つの論点と賛否を整理します。</span><span class="meta">分類済み <b>2,015</b>件<span class="sep">/</span>最終更新 2026年8月9日</span></a></li>
+      <li><a href="/sns-reaction-map/consumption-tax-cut-reaction-map.html"><span class="cat">税・財政</span><span class="ttl">消費税減税</span><span class="sum">消費税減税について、対象範囲、財源と社会保障、価格への効果、給付付き税額控除との比較、事業者の実務負担、公約と政治不信の6論点とSNS上の賛否を整理します。</span><span class="meta">分類済み <b>667</b>件<span class="sep">/</span>最終更新 2026年7月29日</span></a></li>
+      <li><a href="/sns-reaction-map/fukushuto-reaction-map.html"><span class="cat">政治・統治機構</span><span class="ttl">副首都法案・副首都構想</span><span class="sum">副首都法案・副首都構想について、制度の定義、防災、候補地、費用、大阪都構想、政策優先順位の6論点とSNS上の反応を整理します。</span><span class="meta">分類済み <b>897</b>件<span class="sep">/</span>最終更新 2026年8月8日</span></a></li>
+      <li><a href="/sns-reaction-map/bukatsu-chiiki-reaction-map.html"><span class="cat">教育・子ども</span><span class="ttl">部活動の地域移行</span><span class="sum">部活動の地域移行について、教員負担、費用、受け皿、教育的価値、地域格差など7つの論点とSNS上の賛成・反対を整理します。</span><span class="meta">分類済み <b>732</b>件<span class="sep">/</span>最終更新 2026年8月8日</span></a></li>
+      <li><a href="/sns-reaction-map/koshitsu-tenpakai-reaction-map.html"><span class="cat">政治・皇室</span><span class="ttl">皇室典範改正（女性皇族の皇籍維持・旧宮家養子）</span><span class="sum">皇室典範改正について、女性皇族の皇籍維持、旧宮家からの養子、男系・女系、立法手法などの論点とSNS上の反応を整理します。</span><span class="meta">分類済み <b>672</b>件<span class="sep">/</span>最終更新 2026年8月10日</span></a></li>
+      <li><a href="/sns-reaction-map/constitutional-amendment-reaction-map.html"><span class="cat">政治・法律</span><span class="ttl">憲法改正論議</span><span class="sum">憲法改正をめぐるSNS投稿を、9条、緊急事態条項、国民投票、情報環境など6つの論点に分類し、賛否と判断理由を整理します。</span><span class="meta">分類済み <b>646</b>件<span class="sep">/</span>最終更新 2026年7月26日</span></a></li>
+      <li><a href="/sns-reaction-map/takaichi-reaction-map-standard.html"><span class="cat">政治・ネット選挙</span><span class="ttl">高市文春問題</span><span class="sum">高市早苗氏をめぐる文春報道やSNS上の反応を、中傷動画、説明責任、報道への評価、比較、政治倫理など5つの論点に分けて整理します。</span><span class="meta">分類済み <b>447</b>件<span class="sep">/</span>最終更新 2026年8月7日</span></a></li>
+      <li><a href="/sns-reaction-map/school-nickname-ban-reaction-map.html"><span class="cat">教育・子ども</span><span class="ttl">学校でのあだ名禁止</span><span class="sum">学校でのあだ名禁止・さん付け指導について、いじめ防止、心理的安全、文化、本人の選択など6つの論点とSNS上の賛否を整理します。</span><span class="meta">分類済み <b>374</b>件<span class="sep">/</span>最終更新 2026年7月26日</span></a></li>
+      <li><a href="/sns-reaction-map/henoko-student-accident-reaction-map.html"><span class="cat">教育・基地問題</span><span class="ttl">辺野古高校生死亡事故</span><span class="sum">辺野古高校生死亡事故をめぐるSNS投稿を、安全管理、政治的中立性、追悼、平和教育、政治利用、報道の6論点に分けて整理します。</span><span class="meta">分類済み <b>363</b>件<span class="sep">/</span>最終更新 2026年7月26日</span></a></li>
+      <li><a href="/sns-reaction-map/elderly-license-revocation-reaction-map.html"><span class="cat">交通・福祉</span><span class="ttl">高齢者免許返納</span><span class="sum">高齢者の運転免許返納義務化について、事故防止、地方の移動手段、適性検査、代替交通などの論点とSNS上の賛否を整理します。</span><span class="meta">分類済み <b>211</b>件<span class="sep">/</span>最終更新 2026年7月26日</span></a></li>
+      <li><a href="/sns-reaction-map/bike-blue-ticket-reaction-map.html"><span class="cat">交通・安全</span><span class="ttl">自転車の青切符導入</span><span class="sum">自転車の青切符（反則金）導入について、取締り強化、走行環境、ルールの分かりにくさ、免許制などの論点とSNS上の賛否を整理します。</span><span class="meta">分類済み <b>181</b>件<span class="sep">/</span>最終更新 2026年7月26日</span></a></li>
     </ul>
+  </section>
+
+  <section>
+    <h2>最近の更新</h2>
+    <div class="recent">
+      <ul>
+        <li><span class="when">2026年8月10日</span><a href="/sns-reaction-map/koshitsu-tenpakai-reaction-map.html">皇室典範改正（女性皇族の皇籍維持・旧宮家養子）</a><span class="what">分類済み 672件に更新</span></li>
+        <li><span class="when">2026年8月9日</span><a href="/sns-reaction-map/ai-copyright-reaction-map.html">生成AIと著作権</a><span class="what">分類済み 2,015件に更新</span></li>
+        <li><span class="when">2026年8月8日</span><a href="/sns-reaction-map/fukushuto-reaction-map.html">副首都法案・副首都構想</a><span class="what">分類済み 897件に更新</span></li>
+      </ul>
+    </div>
   </section>
 
   <section>
@@ -128,8 +165,9 @@ footer.site .copy{padding-top:14px;border-top:1px solid rgba(255,255,255,.12);fo
       <ul>
         <li><b>賛否のどちらかを推奨しません。</b>特定の政党・団体・候補者を支持または批判する目的でテーマを選定・編集することはありません。</li>
         <li><b>両側の理由を必ず載せます。</b>片方の立場の論拠だけを詳しく書き、もう片方を要約で済ませることはしません。</li>
-        <li><b>数字の出所を明示します。</b>ページに出す件数は収集した投稿データから機械的に算出したものだけを使い、根拠のない概数は掲載しません。</li>
+        <li><b>数字の出所を明示します。</b>ページに出す件数は収集した投稿データから機械的に算出したものだけを使い、根拠のない概数は掲載しません。算出できない数字はページに出しません。</li>
         <li><b>投稿の扱いに配慮します。</b>個々の投稿は要約とリンク中心で扱い、一般個人が特定される形での転載は行いません。</li>
+        <li><b>分かっていないことは、分かっていないと書きます。</b>収集したデータだけでは判断できない点は、各テーマの「収集・分類で分かったこと」に明記します。</li>
         <li><b>誤りは訂正します。</b>事実誤認のご指摘および掲載内容の削除依頼には、内容を確認のうえ対応します。</li>
       </ul>
     </div>
@@ -137,7 +175,8 @@ footer.site .copy{padding-top:14px;border-top:1px solid rgba(255,255,255,.12);fo
 
   <section>
     <h2>運営者・お問い合わせ</h2>
-    <p>本サイトは個人が運営しています。テーマの選定、データ収集・分類の仕組みの開発、ページ制作までを一貫して行っています。運営者情報とデータの詳しい取り扱いは<a href="/sns-reaction-map/about.html">このサイトについて</a>をご覧ください。</p>
+    <p>本サイトは個人が運営しています。テーマの選定、データ収集・分類の仕組みの開発、ページ制作までを一貫して行っています。ページ内で使っている「SNS反応まっぷ編集部」は個人運営プロジェクトの編集名義であり、法人名ではありません。</p>
+    <p>収集の方法、意見投稿と判定する基準、論点と立場の分類方法、代表投稿の選び方、AI分類の誤りをどう確認しているかは、<a href="/sns-reaction-map/about.html#method">調査・編集方法</a>に手順として書いています。運営者情報は<a href="/sns-reaction-map/about.html#operator">運営者情報</a>をご覧ください。</p>
     <p>内容の誤りのご指摘、引用の削除依頼、その他のお問い合わせは<a href="https://docs.google.com/forms/d/e/1FAIpQLSdySbMYxEsLOYmI4jsqjIkSGl6WHF78qLlypOmXAg9tVDy2FQ/viewform" target="_blank" rel="noopener noreferrer">お問い合わせフォーム</a>よりお寄せください。個人運営のため個別の返信は原則として行っておりませんが、事実誤認のご指摘と削除依頼には対応します。</p>
   </section>
 
